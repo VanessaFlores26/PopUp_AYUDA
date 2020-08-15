@@ -120,19 +120,6 @@
                             {{data[0]["telefono"]}}
                         </p>
                         <br>
-                        
-
-                        <form action="/emprendedorProfile" method="POST">
-                                <td><button type="submit" value="update" >Ayuda</button></td>
-                                <input type="hidden" name="formId" id="formId" value="1">
-                                <input type="hidden" name="id" id="id" value="{{data[0]["id"]}}">
-                                <input type="hidden" name="nombre" id="nombre" value="{{data[0]["nombre"]}}">
-                                <input type="hidden" name="email" id="email" value="{{data[0]["email"]}}"> 
-                                <input type="hidden" name="telefono" id="telefono" value="{{data[0]["telefono"]}}">
-                                <input type="hidden" name="pais" id="pais" value="{{data[0]["pais"]}}">              
-                                <input type="hidden" name="ciudad" id="ciudad" value="{{data[0]["ciudad"]}}">
-                                <input type="hidden" name="biografia" id="biografia" value="{{data[0]["biografia"]}}">
-                        </form>
                         <!-- Button trigger modal -->
                         <button class="button button-postComment button--active" type="button" data-toggle="modal" data-target="#exampleModalCenter" ><i class="fa fa-paper-plane"></i>
                         Modificar Informacion
@@ -156,7 +143,7 @@
                             
                             <!--POPUP: Form Modificar la informacion general-->
 
-                                {% if verdadero %}
+                                
                                 <div class="container">
                                     <p>Modificar datos personales</p>
                                     <form NAME="formId" id="formId" action="/emprendedorProfile" method="POST" enctype="multipart/form-data">
@@ -213,7 +200,7 @@
                                         <input type="hidden" name="id" id="id" value="{{id}}">
                                     </form>
                                 </div>
-                                {% endif %}
+                                
                             </div>
                             </div>
                         </div>

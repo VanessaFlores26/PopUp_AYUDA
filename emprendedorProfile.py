@@ -19,6 +19,8 @@ def ProfileEmp():
         idUsuario = int(user["id"])
         data = logic.getDatosGeneralesById(idUsuario)
         idEmprendedor = data[0]["id"]
+        emprendedor = data[0]
+        session["emprendedor"] = emprendedor
         if request.method == "GET":
             # Datillos
             dataEmprendimiento = logicEmprendimiento.getAllEmprendimientosByIdEmprendendor(
@@ -30,6 +32,12 @@ def ProfileEmp():
                 data=data,
                 dataEmprendimiento=dataEmprendimiento,
                 data2=data2,
+                nombre=emprendedor["nombre"],
+                email=emprendedor["email"],
+                pais=emprendedor["pais"],
+                ciudad=emprendedor["ciudad"],
+                telefono=emprendedor["telefono"],
+                biografia=emprendedor["biografia"],
             )
 
         elif request.method == "POST":
@@ -40,12 +48,13 @@ def ProfileEmp():
             # Modificar informacion personal
             if formId == 1:
                 id = idUsuario
-                nombre = request.form["nombre"]
-                email = request.form["email"]
-                telefono = request.form["telefono"]
-                pais = request.form["pais"]
-                ciudad = request.form["ciudad"]
-                biografia = request.form["biografia"]
+                emprendedor = session["emprendedor"]
+                nombre = emprendedor["nombre"]
+                email = emprendedor["email"]
+                telefono = emprendedor["telefono"]
+                pais = emprendedor["pais"]
+                ciudad = emprendedor["ciudad"]
+                biografia = emprendedor["biografia"]
 
                 verdadero = True
 
@@ -70,6 +79,7 @@ def ProfileEmp():
 
             # Aplicar cambios en informacion general
             elif formId == 2:
+                emprendedor = session["emprendedor"]
                 data2 = logic.getNotification(idEmprendedor)
                 nombre = request.form["nombre"]
                 email = request.form["email"]
@@ -106,12 +116,18 @@ def ProfileEmp():
                     data=data,
                     data2=data2,
                     dataEmprendimiento=dataEmprendimiento,
+                    nombre=emprendedor["nombre"],
+                    email=emprendedor["email"],
+                    pais=emprendedor["pais"],
+                    ciudad=emprendedor["ciudad"],
+                    telefono=emprendedor["telefono"],
+                    biografia=emprendedor["biografia"],
                 )
 
             # Crear nuevo emprendimiento
             elif formId == 3:
                 verdaderoEmprendimiento = True
-
+                emprendedor = session["emprendedor"]
                 dataEmprendimiento = logicEmprendimiento.getAllEmprendimientosByIdEmprendendor(
                     idEmprendedor
                 )
@@ -122,6 +138,12 @@ def ProfileEmp():
                     data2=data2,
                     dataEmprendimiento=dataEmprendimiento,
                     verdaderoEmprendimiento=verdaderoEmprendimiento,
+                    nombre=emprendedor["nombre"],
+                    email=emprendedor["email"],
+                    pais=emprendedor["pais"],
+                    ciudad=emprendedor["ciudad"],
+                    telefono=emprendedor["telefono"],
+                    biografia=emprendedor["biografia"],
                 )
 
             # Insertar nuevo emprendimiento
@@ -144,6 +166,7 @@ def ProfileEmp():
                 facebook = request.form["facebook"]
                 instagram = request.form["instagram"]
                 youtube = request.form["youtube"]
+                emprendedor = session["emprendedor"]
 
                 if foto.filename == "":
                     nombre_foto = "default.png"
@@ -188,6 +211,7 @@ def ProfileEmp():
                     )
 
                 data = logic.getDatosGeneralesById(idUsuario)
+                emprendedor = session["emprendedor"]
                 dataEmprendimiento = logicEmprendimiento.getAllEmprendimientosByIdEmprendendor(
                     id_emprendedor
                 )
@@ -197,6 +221,12 @@ def ProfileEmp():
                     data=data,
                     data2=data2,
                     dataEmprendimiento=dataEmprendimiento,
+                    nombre=emprendedor["nombre"],
+                    email=emprendedor["email"],
+                    pais=emprendedor["pais"],
+                    ciudad=emprendedor["ciudad"],
+                    telefono=emprendedor["telefono"],
+                    biografia=emprendedor["biografia"],
                 )
 
             # Sale del emprendimiento by IdEmprendimiento
@@ -215,6 +245,12 @@ def ProfileEmp():
                     data=data,
                     data2=data2,
                     dataEmprendimiento=dataEmprendimiento,
+                    nombre=emprendedor["nombre"],
+                    email=emprendedor["email"],
+                    pais=emprendedor["pais"],
+                    ciudad=emprendedor["ciudad"],
+                    telefono=emprendedor["telefono"],
+                    biografia=emprendedor["biografia"],
                 )
 
             # Va hacia el emprendimiento que se selecciona
