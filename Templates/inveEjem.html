@@ -1,0 +1,149 @@
+<div id="bg-modal"> 
+
+            <div class="modal-contact" >
+                <div class="container-contact100">
+                    <div class="wrap-contact100">
+                        <form action="/emprendedorProfile" class="contact100-form validate-form" method="POST" enctype="multipart/form-data">
+                            <span class="contact100-form-title">
+                                Nuevo emprendimiento 
+                            </span>
+
+                            <div class="wrap-input100 input100-select">
+                                <span class="label-input100">Estado del emprendimiento</span>
+                                <div>
+                                    <select class="selection-2" name="estado" id="estado">
+                                         <option value="Huevo">Huevo </option>
+                                        <option value="Pez Dorado">Pez dorado</option>
+                                        <option value="tiburon">Tiburón</option>
+                                    </select>
+                                </div>
+                                <span class="focus-input100"></span>
+                            </div>
+
+                            <div class="wrap-input100 validate-input">
+                                <span class="label-input100">Descripción</span>
+                                <textarea class="input100" name="descripcion" cols="30" rows="10" id="descripcion">{{descripcion}}</textarea>
+                                <span class="focus-input100"></span>
+                            </div>
+
+                            <div class="wrap-input100 validate-input">
+                                <span class="label-input100">Historia</span>
+                                <input class="input100" type="text" name="historia" id="historia" value="{{historia}}">
+                                <span class="focus-input100"></span>
+                            </div>
+
+                            <div class="wrap-input100 validate-input" >
+                                <span class="label-input100">Eslogan</span>
+                                <input class="input100" type="text" name="eslogan" id="eslogan" value="{{eslogan}}">
+                                <span class="focus-input100"></span>
+                            </div>
+
+                            <div class="wrap-input100 validate-input" >
+                                <span class="label-input100">Inversión incial</span>
+                                <input class="input100" type="text" name="inversion_inicial" id="inversion_inicial" value="{{inversion_inicial}}">
+                                <span class="focus-input100"></span>
+                            </div>
+
+                            <div class="wrap-input100 validate-input" >
+                                <span class="label-input100">Fecha fundacion</span>
+                                <input class="input100" type="date" name="fecha_fundacion" id="fecha_fundacion" value="{{fecha_fundacion}}"><br>
+                                <span class="focus-input100"></span>
+                            </div>
+
+                            <div class="wrap-input100 validate-input">
+                                <span class="label-input100">Venta de año anterior</span>
+                                <input class="input100" type="text" name="venta_año_anterior" id="venta_año_anterior" value="{{venta_año_anterior}}">                                
+                                <span class="focus-input100"></span>                                <span class="focus-input100"></span>
+                            </div>
+
+                            <div class="wrap-input100 validate-input">
+                                <span class="label-input100">Nombre del emprendimiento</span>
+                                <input class="input100" type="text" name="nombre" id="nombre" value="{{nombre}}">
+                                <span class="focus-input100"></span>
+                            </div>
+
+                            <div class="wrap-input100 validate-input">
+                                <span class="label-input100">Email</span>
+                                <input class="input100" type="text" name="email" id="email" value="{{email}}">
+                                <span class="focus-input100"></span>
+                            </div>
+
+                            <div class="wrap-input100 validate-input">
+                                <span class="label-input100">Teléfono</span>
+                                <input class="input100" type="text" name="telefono" id="telefono" value="{{telefono}}">
+                                <span class="focus-input100"></span>
+                            </div>
+
+                            <div class="wrap-input100 validate-input">
+                                <span class="label-input100">Embed video</span>
+                                <input class="input100" type="url" name="video" id="video" value="{{video}}">
+                                <span class="focus-input100"></span>
+                            </div>
+
+                            <div class="wrap-input100 validate-input">
+                                <span class="label-input100">Facebook</span>
+                                <input class="input100" type="text" name="facebook" id="facebook" value="{{facebook}}">
+                                <span class="focus-input100"></span>
+                            </div>
+
+                            <div class="wrap-input100 validate-input">
+                                <span class="label-input100">Instagram</span>
+                                <input class="input100" type="text" name="instagram" id="instagram" value="{{instagram}}">
+                                <span class="focus-input100"></span>
+                            </div>
+
+                            <div class="wrap-input100 validate-input">
+                                <span class="label-input100">Youtube</span>
+                                <input class="input100" type="text" name="youtube" id="youtube" value="{{youtube}}">
+                                <span class="focus-input100"></span>
+                            </div>
+
+                            <div class="wrap-input100 validate-input">
+                                <span class="label-input100">Foto</span>
+                                <input class="input100" type="file" name="fileToUpload" id="fileToUpload">
+                                <span class="focus-input100"></span>
+                            </div>
+                            <!--Aplicar cambios-->
+                            <a onclick= "showPopup('none');"> <button type="submit" class="buttonpopupclose" value="update">Crear emprendimiento</button> </a>
+                            <input type="hidden" name="formId" id="formId" value="4">
+                            <input type="hidden" name="id" id="id" value="{{id}}">
+                        </form>
+                            
+                    </div>
+                </div>
+
+
+
+
+
+   <!--Form crear nuevo emprendimiento-->
+    {% if verdaderoEmprendimiento %}
+    
+    <form action="/emprendedorProfile" method="POST" enctype="multipart/form-data">
+        Estado: 
+        <select name="estado" id="estado">
+            <option value="Huevo">Huevo </option>
+            <option value="Pez Dorado">Pez dorado</option>
+            <option value="tiburon">Tiburón</option>
+        </select><br>
+        Descripcion: <br><textarea name="descripcion" cols="30" rows="10" id="descripcion" value="{{descripcion}}"></textarea><br>
+        Historia: <input type="text" name="historia" id="historia" value="{{historia}}"><br>
+        Eslogan: <input type="text" name="eslogan" id="eslogan" value="{{eslogan}}"><br>
+        Inversion inicial: <input type="text" name="inversion_inicial" id="inversion_inicial" value="{{inversion_inicial}}"><br>
+        Fecha fundacion: <input type="date" name="fecha_fundacion" id="fecha_fundacion" value="{{fecha_fundacion}}"><br>
+        Venta de año anterior: <input type="text" name="venta_año_anterior" id="venta_año_anterior" value="{{venta_año_anterior}}"><br>
+        Nombre del emprendimiento: <input type="text" name="nombre" id="nombre" value="{{nombre}}"><br><br>
+        Email: <input type="text" name="email" id="email" value="{{email}}"><br>
+        Telefono: <input type="text" name="telefono" id="telefono" value="{{telefono}}"><br>
+        Video: <input type="url" name="video" id="video" value="{{video}}"><br>
+        Facebook: <input type="text" name="facebook" id="facebook" value="{{facebook}}"><br>
+        Instagram: <input type="text" name="instagram" id="instagram" value="{{instagram}}"><br>
+        Youtube: <input type="text" name="youtube" id="youtube" value="{{youtube}}"><br>
+        Foto: <input type="file" name="fileToUpload" id="fileToUpload"><br><br>
+        
+        <!--Insertar emprendimiento-->
+        <button type="submit" value="update">Crear emprendimiento</button>
+        <input type="hidden" name="formId" id="formId" value="4">
+        <input type="hidden" name="id" id="id" value="{{id}}">
+    </form>
+    <br><br>
